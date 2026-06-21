@@ -1,7 +1,13 @@
+<div align="center">
+
 # TradeNova — Arquitectura C4
 
 > **Laboratorio No. 2 · Diseño Arquitectónico de Software**  
 > Maestría en Arquitectura de Software
+
+</div>
+
+---
 
 ---
 
@@ -289,3 +295,12 @@ Materia: Diseño Arquitectónico de Software — Laboratorio No. 2
 ---
 
 *Modelado con el framework C4 (Simon Brown) — [c4model.com](https://c4model.com)*
+
+---
+
+## Autor
+
+**Alejandro De Mendoza**  
+Ingeniero Informático · Especialista en IA · Especialista en Ingeniería de Software · Máster en Arquitectura de Software
+
+[![GitHub](https://img.shields.io/badge/GitHub-AlejoTechEngineer-181717?style=for-the-badge&logo=github)](https://github.com/AlejoTechEngineer)
