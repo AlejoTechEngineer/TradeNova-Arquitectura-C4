@@ -19,6 +19,23 @@ La arquitectura fue modelada con el framework **C4 Model** (Simon Brown), usando
 
 ---
 
+## Arquitectura
+
+```mermaid
+flowchart TD
+    A[Usuario Trader] --> B[App Movil/Web - React Native / Angular]
+    C[Regulador Financiero] --> D[API Gateway - Node.js / Kong - Rate limiting]
+    B --> D
+    D --> E[Servicio de Autenticacion - Spring Security / JWT / RBAC]
+    D --> F[Motor de Ordenes - Java / Spring Boot - Tiempo real]
+    F --> G[Apache Kafka - Message Broker - Eventos asincronos]
+    G --> H[(PostgreSQL - ordenes / usuarios / posiciones)]
+    F --> I[Broker Externo - Protocolo FIX 4.4]
+    D --> J[Bolsa de Valores - REST / WebSocket]
+    D --> K[Proveedor de Datos - WebSocket / FIX - Precios tiempo real]
+    E --> H
+```
+
 ## El Modelo C4
 
 El modelo C4 describe la arquitectura de software mediante **4 niveles de zoom**, cada uno orientado a una audiencia distinta:
@@ -256,23 +273,6 @@ La integración con brokers externos usa el estándar de la industria **Financia
 Centraliza cross-cutting concerns: autenticación JWT, rate limiting, logging y circuit breaker, evitando duplicarlos en cada servicio interno.
 
 ---
-
-## Arquitectura
-
-```mermaid
-flowchart TD
-    A[Usuario Trader] --> B[App Movil/Web - React Native / Angular]
-    C[Regulador Financiero] --> D[API Gateway - Node.js / Kong - Rate limiting]
-    B --> D
-    D --> E[Servicio de Autenticacion - Spring Security / JWT / RBAC]
-    D --> F[Motor de Ordenes - Java / Spring Boot - Tiempo real]
-    F --> G[Apache Kafka - Message Broker - Eventos asincronos]
-    G --> H[(PostgreSQL - ordenes / usuarios / posiciones)]
-    F --> I[Broker Externo - Protocolo FIX 4.4]
-    D --> J[Bolsa de Valores - REST / WebSocket]
-    D --> K[Proveedor de Datos - WebSocket / FIX - Precios tiempo real]
-    E --> H
-```
 
 ## Estructura del Repositorio
 
