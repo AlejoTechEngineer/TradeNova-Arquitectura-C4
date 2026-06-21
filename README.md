@@ -257,6 +257,23 @@ Centraliza cross-cutting concerns: autenticación JWT, rate limiting, logging y 
 
 ---
 
+## Arquitectura
+
+```mermaid
+flowchart TD
+    A[Usuario Trader] --> B[App Movil/Web - React Native / Angular]
+    C[Regulador Financiero] --> D[API Gateway - Node.js / Kong - Rate limiting]
+    B --> D
+    D --> E[Servicio de Autenticacion - Spring Security / JWT / RBAC]
+    D --> F[Motor de Ordenes - Java / Spring Boot - Tiempo real]
+    F --> G[Apache Kafka - Message Broker - Eventos asincronos]
+    G --> H[(PostgreSQL - ordenes / usuarios / posiciones)]
+    F --> I[Broker Externo - Protocolo FIX 4.4]
+    D --> J[Bolsa de Valores - REST / WebSocket]
+    D --> K[Proveedor de Datos - WebSocket / FIX - Precios tiempo real]
+    E --> H
+```
+
 ## Estructura del Repositorio
 
 ```
